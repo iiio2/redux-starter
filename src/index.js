@@ -1,5 +1,5 @@
 import store from './store';
-import { BUG_ADDED, BUG_REMOVED } from './actionTypes';
+import { bugAdded, bugRemoved } from './actions';
 
 // state = reducer(state, action)
 // notify subscribers
@@ -10,22 +10,12 @@ const unsubscribe = store.subscribe(() => {
   console.log('State Changed', store.getState());
 });
 
-store.dispatch({
-  type: BUG_ADDED,
-  payload: {
-    description: 'Bug1',
-  },
-});
+store.dispatch(bugAdded('Bug 1'));
 
 // if it is called, after then nothing will be run in subscribe. it will not be notified;
 
 unsubscribe();
 
-store.dispatch({
-  type: BUG_REMOVED,
-  payload: {
-    id: 1,
-  },
-});
+store.dispatch(bugRemoved(1));
 
 console.log(store.getState());
