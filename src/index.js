@@ -1,5 +1,8 @@
 import store from './store';
 
+// state = reducer(state, action)
+// notify subscribers
+
 // store.subscribe => it runs when the state changes everytime.
 
 const unsubscribe = store.subscribe(() => {
